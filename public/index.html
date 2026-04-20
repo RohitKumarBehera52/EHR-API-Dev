@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EHR Workspace</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Workspace navigation">
+      <div class="brand">
+        <span class="brand-mark">E</span>
+        <div>
+          <strong>EHR Core</strong>
+          <span>Clinical workspace</span>
+        </div>
+      </div>
+
+      <nav class="nav-list">
+        <a href="#patients" class="active">Patients</a>
+        <a href="#encounter">Encounters</a>
+        <a href="/api/health">Health check</a>
+      </nav>
+
+      <div class="side-note">
+        <img
+          src="/assets/care-team.svg"
+          alt="Care team at clinical workstation">
+        <p>Patient data is stored locally for the MVP pilot.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="command-bar">
+        <div>
+          <p class="kicker">Care desk</p>
+          <h1>Patient chart workspace</h1>
+        </div>
+        <div class="operator">
+          <span class="status-dot"></span>
+          <div>
+            <strong>API online</strong>
+            <span>localhost:4000</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="metrics" aria-label="Workspace metrics">
+        <div class="metric">
+          <span>Patients</span>
+          <strong id="patient-count">0</strong>
+        </div>
+        <div class="metric accent">
+          <span>Intake</span>
+          <strong>Open</strong>
+        </div>
+        <div class="metric warm">
+          <span>Encounter mode</span>
+          <strong>Ready</strong>
+        </div>
+      </section>
+
+      <section class="patient-grid" id="patients">
+        <div class="work-panel intake-panel">
+          <div class="panel-head">
+            <div>
+              <p class="kicker">New patient</p>
+              <h2>Create chart</h2>
+            </div>
+            <span class="chip">Demographics</span>
+          </div>
+
+          <form id="patient-form" class="form-grid">
+            <label>
+              First name
+              <input name="firstName" required autocomplete="given-name">
+            </label>
+            <label>
+              Last name
+              <input name="lastName" required autocomplete="family-name">
+            </label>
+            <label>
+              Date of birth
+              <input name="dateOfBirth" type="date" required>
+            </label>
+            <label>
+              Gender
+              <select name="gender" required>
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+                <option value="unknown">Unknown</option>
+              </select>
+            </label>
+            <label>
+              Phone
+              <input name="phone" required autocomplete="tel">
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" autocomplete="email">
+            </label>
+            <label class="span-all">
+              Address
+              <input name="address" autocomplete="street-address">
+            </label>
+            <label>
+              Blood group
+              <input name="bloodGroup" placeholder="O+">
+            </label>
+            <label>
+              Emergency contact
+              <input name="emergencyContact" autocomplete="tel">
+            </label>
+            <button type="submit" class="primary-action">Create patient</button>
+          </form>
+        </div>
+
+        <div class="work-panel registry-panel">
+          <div class="panel-head">
+            <div>
+              <p class="kicker">Registry</p>
+              <h2>Patient index</h2>
+            </div>
+            <span class="chip blue">Search</span>
+          </div>
+
+          <form id="search-form" class="search-row">
+            <input name="name" placeholder="Name">
+            <input name="phone" placeholder="Phone">
+            <input name="dateOfBirth" type="date" aria-label="Date of birth">
+            <button type="submit">Search</button>
+          </form>
+
+          <div id="patients-list" class="record-list" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="encounter-layout" id="encounter">
+        <div class="encounter-visual">
+          <img
+            src="/assets/clinical-workstation.svg"
+            alt="Clinical documentation station">
+          <div class="visual-caption">
+            <p class="kicker">Visit record</p>
+            <h2>Capture the clinical story.</h2>
+          </div>
+        </div>
+
+        <div class="work-panel encounter-panel">
+          <div class="panel-head">
+            <div>
+              <p class="kicker">Encounter</p>
+              <h2>Visit notes</h2>
+            </div>
+            <span class="chip coral">Diagnosis</span>
+          </div>
+
+          <form id="encounter-form" class="form-grid">
+            <label>
+              Patient ID
+              <input name="patientId" required placeholder="PAT_...">
+            </label>
+            <label>
+              Provider ID
+              <input name="providerId" required placeholder="PROV-1001">
+            </label>
+            <label>
+              Visit date
+              <input name="visitDate" type="date" required>
+            </label>
+            <label>
+              Visit type
+              <select name="visitType" required>
+                <option value="">Select</option>
+                <option value="outpatient">Outpatient</option>
+                <option value="inpatient">Inpatient</option>
+                <option value="emergency">Emergency</option>
+                <option value="telehealth">Telehealth</option>
+                <option value="follow_up">Follow up</option>
+              </select>
+            </label>
+            <label class="span-all">
+              Chief complaint
+              <input name="chiefComplaint" required>
+            </label>
+            <label class="span-all">
+              Clinical notes
+              <textarea name="clinicalNotes" rows="4"></textarea>
+            </label>
+            <label>
+              Diagnosis code
+              <input name="diagnosisCode" placeholder="I10">
+            </label>
+            <label>
+              Diagnosis
+              <input name="diagnosisDescription" required placeholder="Essential hypertension">
+            </label>
+            <button type="submit" class="primary-action">Save encounter</button>
+          </form>
+
+          <div id="encounters-list" class="record-list compact" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

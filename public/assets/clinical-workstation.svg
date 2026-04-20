@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 620" role="img" aria-labelledby="title desc">
+  <title id="title">Clinical documentation workstation</title>
+  <desc id="desc">Illustration of a clinical workstation with patient records and diagnosis notes.</desc>
+  <rect width="760" height="620" fill="#eef3f1"/>
+  <rect x="58" y="68" width="644" height="420" rx="34" fill="#ffffff"/>
+  <rect x="104" y="112" width="552" height="260" rx="20" fill="#202f2b"/>
+  <rect x="136" y="148" width="210" height="22" rx="11" fill="#dff1ec"/>
+  <rect x="136" y="194" width="454" height="16" rx="8" fill="#7db9ad"/>
+  <rect x="136" y="232" width="382" height="16" rx="8" fill="#7db9ad"/>
+  <rect x="136" y="270" width="430" height="16" rx="8" fill="#7db9ad"/>
+  <rect x="136" y="318" width="144" height="28" rx="10" fill="#0b725f"/>
+  <rect x="314" y="318" width="144" height="28" rx="10" fill="#2e7fa1"/>
+  <rect x="232" y="392" width="296" height="28" rx="14" fill="#bdcbc6"/>
+  <rect x="280" y="420" width="200" height="28" rx="14" fill="#d8e0dd"/>
+  <rect x="106" y="514" width="548" height="38" rx="19" fill="#bdcbc6"/>
+  <circle cx="606" cy="168" r="30" fill="#bd5349"/>
+  <path d="M598 167h-14v-11h14v-15h12v15h15v11h-15v15h-12z" fill="#ffffff"/>
+  <circle cx="170" cy="470" r="52" fill="#f0c9ad"/>
+  <path d="M104 592c14-72 118-72 132 0z" fill="#0b725f"/>
+  <circle cx="578" cy="474" r="46" fill="#e3b694"/>
+  <path d="M520 592c13-65 103-65 116 0z" fill="#2e7fa1"/>
+</svg>
