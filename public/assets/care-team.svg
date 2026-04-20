@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Care team reviewing a patient chart</title>
+  <desc id="desc">Illustration of clinicians reviewing an electronic health record.</desc>
+  <rect width="640" height="480" fill="#dff1ec"/>
+  <rect x="48" y="52" width="544" height="376" rx="28" fill="#ffffff"/>
+  <rect x="84" y="88" width="472" height="72" rx="16" fill="#0b725f"/>
+  <rect x="116" y="116" width="184" height="12" rx="6" fill="#dff1ec"/>
+  <rect x="116" y="138" width="112" height="10" rx="5" fill="#b7d9d0"/>
+  <circle cx="482" cy="124" r="24" fill="#ffffff"/>
+  <path d="M476 123h-12v-10h12v-12h11v12h12v10h-12v12h-11z" fill="#0b725f"/>
+  <rect x="86" y="194" width="202" height="188" rx="22" fill="#eef6f3"/>
+  <circle cx="156" cy="254" r="42" fill="#2e7fa1"/>
+  <path d="M103 360c11-54 94-54 106 0z" fill="#0b725f"/>
+  <rect x="322" y="198" width="232" height="32" rx="9" fill="#e6eeeb"/>
+  <rect x="322" y="252" width="184" height="24" rx="8" fill="#d4e2de"/>
+  <rect x="322" y="296" width="212" height="24" rx="8" fill="#d4e2de"/>
+  <rect x="322" y="340" width="148" height="24" rx="8" fill="#d4e2de"/>
+  <circle cx="232" cy="238" r="28" fill="#f3c5a5"/>
+  <path d="M198 327c9-52 75-52 84 0z" fill="#bd5349"/>
+</svg>
