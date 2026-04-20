@@ -1,0 +1,32 @@
+{
+  "name": "ehr-api-dev",
+  "version": "1.0.0",
+  "description": "Node.js Express EHR API using local JSON file storage",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "supertest": "^6.3.4"
+  },
+  "keywords": [
+    "ehr",
+    "express",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC"
+}
