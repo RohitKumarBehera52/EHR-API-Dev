@@ -1,0 +1,4 @@
+interface:
+  display_name: "EHR API Testing"
+  short_description: "Create and review tests, QA cases, and testing prompts for the EHR API MVP"
+  default_prompt: "Use EHR API Testing to create or update integration tests, end-to-end scenarios, QA test cases, testing prompts, and regression coverage for health checks, login, JWT protection, and patient summary retrieval."
