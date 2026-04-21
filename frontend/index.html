@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EHR API Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">EHR MVP Demo</p>
+          <h1>Secure patient summary in one screen.</h1>
+          <p class="hero-text">
+            This demo shows the two scoped capabilities: authenticated access and a
+            consolidated patient summary view for fast clinical review.
+          </p>
+        </div>
+        <div class="hero-card">
+          <div class="metric">
+            <span class="metric-label">Demo User</span>
+            <strong>doctor.demo</strong>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Patient</span>
+            <strong>PAT-1001</strong>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Access</span>
+            <strong>JWT Protected</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="panel auth-panel">
+          <div class="panel-heading">
+            <h2>1. Sign In</h2>
+            <p>Authenticate an authorized user to receive a bearer token.</p>
+          </div>
+
+          <form id="login-form" class="stack">
+            <label class="field">
+              <span>Username</span>
+              <input id="username" name="username" value="doctor.demo" required />
+            </label>
+
+            <label class="field">
+              <span>Password</span>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                value="doctor123"
+                required
+              />
+            </label>
+
+            <button class="button primary" type="submit">Generate Access Token</button>
+          </form>
+
+          <div class="status-card">
+            <p class="status-label">Authentication status</p>
+            <p id="auth-status" class="status-value">Signed out</p>
+          </div>
+
+          <label class="field">
+            <span>Access token</span>
+            <textarea id="token" rows="5" readonly placeholder="Token will appear here"></textarea>
+          </label>
+        </section>
+
+        <section class="panel summary-panel">
+          <div class="panel-heading">
+            <h2>2. Retrieve Patient Summary</h2>
+            <p>Use the token above to fetch a consolidated clinical summary.</p>
+          </div>
+
+          <form id="summary-form" class="summary-toolbar">
+            <label class="field compact">
+              <span>Patient ID</span>
+              <input id="patientId" name="patientId" value="PAT-1001" required />
+            </label>
+            <button class="button secondary" type="submit">Load Summary</button>
+          </form>
+
+          <div id="summary-status" class="inline-message muted">
+            No summary loaded yet.
+          </div>
+
+          <div id="summary-sections" class="summary-grid hidden">
+            <article class="summary-card">
+              <h3>Demographics</h3>
+              <div id="demographics"></div>
+            </article>
+
+            <article class="summary-card">
+              <h3>Latest Encounters</h3>
+              <div id="encounters"></div>
+            </article>
+
+            <article class="summary-card">
+              <h3>Diagnoses</h3>
+              <div id="diagnoses"></div>
+            </article>
+
+            <article class="summary-card">
+              <h3>Active Medications</h3>
+              <div id="medications"></div>
+            </article>
+
+            <article class="summary-card">
+              <h3>Allergies</h3>
+              <div id="allergies"></div>
+            </article>
+
+            <article class="summary-card">
+              <h3>Recent Labs</h3>
+              <div id="labs"></div>
+            </article>
+
+            <article class="summary-card">
+              <h3>Imaging</h3>
+              <div id="imaging"></div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

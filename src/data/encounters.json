@@ -1,2 +1,43 @@
-[]
+[
+  {
+    "encounterId": "ENC-1001",
+    "patientId": "PAT-1001",
+    "providerId": "PROV-1001",
+    "visitDate": "2026-04-18T10:30:00.000Z",
+    "visitType": "outpatient",
+    "chiefComplaint": "Fever and sore throat",
+    "clinicalNotes": "Patient reports sore throat for three days with low-grade fever.",
+    "diagnoses": [
+      {
+        "code": "J02.9",
+        "description": "Acute pharyngitis"
+      }
+    ],
+    "vitals": {
+      "temperature": "100.2 F",
+      "bloodPressure": "118/76"
+    },
+    "createdAt": "2026-04-18T10:45:00.000Z"
+  },
+  {
+    "encounterId": "ENC-1002",
+    "patientId": "PAT-1001",
+    "providerId": "PROV-1002",
+    "visitDate": "2026-04-20T08:15:00.000Z",
+    "visitType": "follow-up",
+    "chiefComplaint": "Review after antibiotics",
+    "clinicalNotes": "Symptoms improving. Continue hydration and complete medication course.",
+    "diagnoses": [
+      {
+        "code": "Z09",
+        "description": "Follow-up examination after treatment"
+      }
+    ],
+    "vitals": {
+      "temperature": "98.6 F",
+      "bloodPressure": "116/74"
+    },
+    "createdAt": "2026-04-20T08:25:00.000Z"
+  }
+]
 

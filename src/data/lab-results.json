@@ -1,2 +1,14 @@
-[]
+[
+  {
+    "labResultId": "LAB-1001",
+    "patientId": "PAT-1001",
+    "encounterId": "ENC-1001",
+    "testName": "Complete Blood Count",
+    "resultValue": "10.8",
+    "unit": "x10^9/L",
+    "referenceRange": "4.0-11.0",
+    "status": "final",
+    "resultDate": "2026-04-18T13:00:00.000Z"
+  }
+]
 

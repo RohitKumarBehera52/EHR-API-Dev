@@ -1,0 +1,10 @@
+[
+  {
+    "allergyId": "ALG-1001",
+    "patientId": "PAT-1001",
+    "allergen": "Penicillin",
+    "reaction": "Rash",
+    "severity": "moderate",
+    "status": "active"
+  }
+]

@@ -1,0 +1,4 @@
+interface:
+  display_name: "EHR API Maintainer"
+  short_description: "Work on the Express-based EHR API, including routes, summaries, docs, and tests"
+  default_prompt: "Use EHR API Maintainer to implement or update authenticated API routes, patient summary aggregation, JSON-backed repository logic, Swagger docs, tests, and SRS-aligned project maintenance in this repository."

@@ -1,0 +1,12 @@
+[
+  {
+    "imagingId": "IMG-1001",
+    "patientId": "PAT-1001",
+    "encounterId": "ENC-1001",
+    "modality": "X-Ray",
+    "studyName": "Chest X-Ray",
+    "studyDate": "2026-04-18T12:00:00.000Z",
+    "impression": "No focal consolidation or pleural effusion.",
+    "imageUrl": "https://example.org/imaging/IMG-1001"
+  }
+]

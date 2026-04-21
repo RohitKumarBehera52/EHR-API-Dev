@@ -1,2 +1,17 @@
-[]
+[
+  {
+    "userId": "USR-1001",
+    "username": "doctor.demo",
+    "passwordHash": "$2a$10$JCM/4iToV.kXPoWE.gZRaeivKe3n8PcIr0znj8bFFY0gQ6X3ac1Da",
+    "role": "doctor",
+    "providerId": "PROV-1001"
+  },
+  {
+    "userId": "USR-1002",
+    "username": "nurse.demo",
+    "passwordHash": "$2a$10$LkPcVqIWmOcj5ZX/tGBNpOnqu0IOTNJ9jJaMkxR9wMguauXxqvxia",
+    "role": "nurse",
+    "providerId": "PROV-1002"
+  }
+]
 

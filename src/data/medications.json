@@ -1,2 +1,25 @@
-[]
+[
+  {
+    "medicationId": "MED-1001",
+    "patientId": "PAT-1001",
+    "drugName": "Amoxicillin",
+    "dosage": "500 mg",
+    "frequency": "Three times daily",
+    "route": "oral",
+    "startDate": "2026-04-18",
+    "endDate": "2026-04-25",
+    "status": "active"
+  },
+  {
+    "medicationId": "MED-1002",
+    "patientId": "PAT-1001",
+    "drugName": "Paracetamol",
+    "dosage": "650 mg",
+    "frequency": "As needed",
+    "route": "oral",
+    "startDate": "2026-04-18",
+    "endDate": "2026-04-20",
+    "status": "completed"
+  }
+]
 
