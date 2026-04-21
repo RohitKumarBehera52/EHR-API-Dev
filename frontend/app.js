@@ -1,9 +1,10 @@
 const loginForm = document.getElementById('login-form');
 const summaryForm = document.getElementById('summary-form');
-const tokenField = document.getElementById('token');
 const authStatus = document.getElementById('auth-status');
 const summaryStatus = document.getElementById('summary-status');
 const summarySections = document.getElementById('summary-sections');
+
+let accessToken = '';
 
 function setMessage(element, message, variant = 'muted') {
   element.textContent = message;
@@ -151,10 +152,10 @@ loginForm.addEventListener('submit', async (event) => {
       throw new Error(data.message || 'Login failed');
     }
 
-    tokenField.value = data.data.accessToken;
+    accessToken = data.data.accessToken;
     setAuthStatus(`Signed in as ${data.data.user.username}`);
   } catch (error) {
-    tokenField.value = '';
+    accessToken = '';
     setAuthStatus(error.message, true);
   }
 });
@@ -163,10 +164,10 @@ summaryForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   const patientId = document.getElementById('patientId').value.trim();
-  const token = tokenField.value.trim();
+  const token = accessToken.trim();
 
   if (!token) {
-    setMessage(summaryStatus, 'Please sign in first to generate a bearer token.', 'error');
+    setMessage(summaryStatus, 'Please sign in first before loading a patient summary.', 'error');
     summarySections.classList.add('hidden');
     return;
   }

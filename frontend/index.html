@@ -43,7 +43,7 @@
         <section class="panel auth-panel">
           <div class="panel-heading">
             <h2>1. Sign In</h2>
-            <p>Authenticate an authorized user to receive a bearer token.</p>
+            <p>Authenticate an authorized user. The access token is stored in memory and is not shown on screen.</p>
           </div>
 
           <form id="login-form" class="stack">
@@ -63,24 +63,19 @@
               />
             </label>
 
-            <button class="button primary" type="submit">Generate Access Token</button>
+            <button class="button primary" type="submit">Sign In Securely</button>
           </form>
 
           <div class="status-card">
             <p class="status-label">Authentication status</p>
             <p id="auth-status" class="status-value">Signed out</p>
           </div>
-
-          <label class="field">
-            <span>Access token</span>
-            <textarea id="token" rows="5" readonly placeholder="Token will appear here"></textarea>
-          </label>
         </section>
 
         <section class="panel summary-panel">
           <div class="panel-heading">
             <h2>2. Retrieve Patient Summary</h2>
-            <p>Use the token above to fetch a consolidated clinical summary.</p>
+            <p>After sign-in, fetch a consolidated clinical summary without exposing the JWT in the interface.</p>
           </div>
 
           <form id="summary-form" class="summary-toolbar">

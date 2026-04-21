@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1240" viewBox="0 0 1800 1240" role="img" aria-labelledby="title desc">
+  <title id="title">EHR API Data Flow Architecture</title>
+  <desc id="desc">Readable architecture diagram showing login, JWT validation, patient summary aggregation, repositories, JSON data files, and frontend rendering.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7f1e7" />
+      <stop offset="100%" stop-color="#efe5d6" />
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0e6b5c" />
+      <stop offset="100%" stop-color="#084a3f" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d97a31" />
+      <stop offset="100%" stop-color="#b85c1b" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#4a3b2a" flood-opacity="0.16" />
+    </filter>
+    <marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#0e6b5c" />
+    </marker>
+    <marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#d97a31" />
+    </marker>
+    <style>
+      .title { font: 700 36px 'Segoe UI', Arial, sans-serif; fill: #1f1a15; }
+      .subtitle { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #5f564c; }
+      .section-title { font: 700 22px 'Segoe UI', Arial, sans-serif; fill: #1f1a15; }
+      .label { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #1f1a15; }
+      .text { font: 500 16px 'Segoe UI', Arial, sans-serif; fill: #3f372f; }
+      .small { font: 700 13px 'Segoe UI', Arial, sans-serif; fill: #5f564c; letter-spacing: 1px; }
+      .box { fill: #fffaf2; stroke: rgba(74, 59, 42, 0.18); stroke-width: 1.5; rx: 24; }
+      .soft { fill: rgba(255, 252, 246, 0.94); stroke: rgba(74, 59, 42, 0.12); stroke-width: 1.5; rx: 22; }
+      .group { fill: rgba(255, 255, 255, 0.42); stroke: rgba(74, 59, 42, 0.12); stroke-width: 1.5; rx: 28; }
+      .dark { fill: url(#hero); stroke: none; rx: 24; }
+      .warm { fill: url(#accent); stroke: none; rx: 20; }
+      .data { fill: #f3ebde; stroke: rgba(14, 107, 92, 0.18); stroke-width: 1.5; rx: 18; }
+      .line-green { stroke: #0e6b5c; stroke-width: 4; fill: none; marker-end: url(#arrow-green); }
+      .line-orange { stroke: #d97a31; stroke-width: 4; fill: none; marker-end: url(#arrow-orange); }
+      .line-dashed { stroke: #7c6c5c; stroke-width: 3; fill: none; stroke-dasharray: 9 8; }
+      .white { fill: #fffaf3; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1240" fill="url(#bg)" />
+
+  <text x="70" y="68" class="title">EHR API Architecture and Data Travel</text>
+  <text x="70" y="102" class="subtitle">Readable overview of the current MVP flow for login, JWT validation, summary aggregation, and UI rendering</text>
+
+  <rect x="50" y="145" width="1700" height="390" class="group" filter="url(#shadow)" />
+  <text x="82" y="185" class="section-title">Authentication Flow</text>
+
+  <rect x="90" y="220" width="270" height="235" class="dark" filter="url(#shadow)" />
+  <text x="116" y="252" class="small white">CLIENT</text>
+  <text x="116" y="288" class="label white">Frontend UI</text>
+  <text x="116" y="324" class="text white">
+    <tspan x="116" dy="0">User enters username</tspan>
+    <tspan x="116" dy="26">and password</tspan>
+    <tspan x="116" dy="34">POST /api/auth/login</tspan>
+    <tspan x="116" dy="26">Store returned JWT</tspan>
+    <tspan x="116" dy="26">only in memory</tspan>
+  </text>
+
+  <rect x="410" y="220" width="300" height="235" class="box" filter="url(#shadow)" />
+  <text x="436" y="252" class="small">EXPRESS API</text>
+  <text x="436" y="288" class="label">Auth Route and Controller</text>
+  <text x="436" y="324" class="text">
+    <tspan x="436" dy="0">src/routes/auth.routes.js</tspan>
+    <tspan x="436" dy="26">src/controllers/auth.controller.js</tspan>
+    <tspan x="436" dy="34">Accept login payload</tspan>
+    <tspan x="436" dy="26">Return standard success response</tspan>
+  </text>
+
+  <rect x="760" y="220" width="300" height="235" class="box" filter="url(#shadow)" />
+  <text x="786" y="252" class="small">BUSINESS LOGIC</text>
+  <text x="786" y="288" class="label">Auth Service</text>
+  <text x="786" y="324" class="text">
+    <tspan x="786" dy="0">Look up user by username</tspan>
+    <tspan x="786" dy="26">Verify bcrypt password hash</tspan>
+    <tspan x="786" dy="26">Sign JWT access token</tspan>
+    <tspan x="786" dy="26">Return token, expiry, and user info</tspan>
+  </text>
+
+  <rect x="1110" y="220" width="260" height="235" class="soft" filter="url(#shadow)" />
+  <text x="1136" y="252" class="small">REPOSITORY</text>
+  <text x="1136" y="288" class="label">users.repository.js</text>
+  <text x="1136" y="324" class="text">
+    <tspan x="1136" dy="0">findByUsername()</tspan>
+    <tspan x="1136" dy="34">Reads data through</tspan>
+    <tspan x="1136" dy="26">json.repository.js</tspan>
+  </text>
+
+  <rect x="1420" y="220" width="270" height="235" class="data" filter="url(#shadow)" />
+  <text x="1446" y="252" class="small">JSON STORAGE</text>
+  <text x="1446" y="288" class="label">src/data/users.json</text>
+  <text x="1446" y="324" class="text">
+    <tspan x="1446" dy="0">Seeded demo users</tspan>
+    <tspan x="1446" dy="26">Password hashes</tspan>
+    <tspan x="1446" dy="26">Role and provider mapping</tspan>
+  </text>
+
+  <path d="M 360 338 C 378 338, 390 338, 410 338" class="line-green" />
+  <path d="M 710 338 C 730 338, 740 338, 760 338" class="line-green" />
+  <path d="M 1060 338 C 1082 338, 1090 338, 1110 338" class="line-green" />
+  <path d="M 1370 338 C 1392 338, 1400 338, 1420 338" class="line-green" />
+
+  <path d="M 1550 462 C 1450 520, 1240 536, 1020 528 C 780 518, 560 505, 360 445" class="line-dashed" />
+  <text x="930" y="505" class="text">JWT access token plus user payload return to the frontend</text>
+
+  <rect x="50" y="580" width="1700" height="610" class="group" filter="url(#shadow)" />
+  <text x="82" y="620" class="section-title">Protected Patient Summary Flow</text>
+
+  <rect x="90" y="655" width="270" height="260" class="dark" filter="url(#shadow)" />
+  <text x="116" y="687" class="small white">CLIENT</text>
+  <text x="116" y="723" class="label white">Frontend UI</text>
+  <text x="116" y="759" class="text white">
+    <tspan x="116" dy="0">User selects patient ID</tspan>
+    <tspan x="116" dy="26">GET /api/patients/:id/summary</tspan>
+    <tspan x="116" dy="26">Authorization: Bearer JWT</tspan>
+    <tspan x="116" dy="34">Render summary cards for</tspan>
+    <tspan x="116" dy="26">demographics, encounters,</tspan>
+    <tspan x="116" dy="26">diagnoses, meds, labs, imaging</tspan>
+  </text>
+
+  <rect x="410" y="655" width="320" height="260" class="box" filter="url(#shadow)" />
+  <text x="436" y="687" class="small">SECURITY</text>
+  <text x="436" y="723" class="label">authenticate.middleware.js</text>
+  <text x="436" y="759" class="text">
+    <tspan x="436" dy="0">Read Authorization header</tspan>
+    <tspan x="436" dy="26">Split Bearer scheme and token</tspan>
+    <tspan x="436" dy="26">Verify JWT with token.util.js</tspan>
+    <tspan x="436" dy="26">Attach req.user to request</tspan>
+    <tspan x="436" dy="26">Reject missing or expired token</tspan>
+  </text>
+
+  <rect x="780" y="655" width="320" height="260" class="box" filter="url(#shadow)" />
+  <text x="806" y="687" class="small">API LAYER</text>
+  <text x="806" y="723" class="label">Patient Route and Controller</text>
+  <text x="806" y="759" class="text">
+    <tspan x="806" dy="0">src/routes/patients.routes.js</tspan>
+    <tspan x="806" dy="26">src/controllers/patients.controller.js</tspan>
+    <tspan x="806" dy="34">Route is reached only after</tspan>
+    <tspan x="806" dy="26">authentication succeeds</tspan>
+    <tspan x="806" dy="26">Controller calls patients.service.js</tspan>
+  </text>
+
+  <rect x="1150" y="655" width="320" height="260" class="box" filter="url(#shadow)" />
+  <text x="1176" y="687" class="small">AGGREGATION</text>
+  <text x="1176" y="723" class="label">patients.service.js</text>
+  <text x="1176" y="759" class="text">
+    <tspan x="1176" dy="0">Load patient, encounters, meds,</tspan>
+    <tspan x="1176" dy="26">allergies, labs, and imaging</tspan>
+    <tspan x="1176" dy="26">Sort encounters and lab results</tspan>
+    <tspan x="1176" dy="26">Filter active medications</tspan>
+    <tspan x="1176" dy="26">Shape a consolidated summary</tspan>
+  </text>
+
+  <path d="M 360 780 C 380 780, 390 780, 410 780" class="line-orange" />
+  <path d="M 730 780 C 750 780, 760 780, 780 780" class="line-orange" />
+  <path d="M 1100 780 C 1120 780, 1130 780, 1150 780" class="line-orange" />
+
+  <rect x="1510" y="640" width="220" height="82" class="data" filter="url(#shadow)" />
+  <text x="1534" y="670" class="small">DATA FILE</text>
+  <text x="1534" y="700" class="label">patients.json</text>
+
+  <rect x="1510" y="742" width="220" height="82" class="data" filter="url(#shadow)" />
+  <text x="1534" y="772" class="small">DATA FILE</text>
+  <text x="1534" y="802" class="label">encounters.json</text>
+
+  <rect x="1510" y="844" width="220" height="82" class="data" filter="url(#shadow)" />
+  <text x="1534" y="874" class="small">DATA FILE</text>
+  <text x="1534" y="904" class="label">medications.json</text>
+
+  <rect x="1510" y="946" width="220" height="168" class="data" filter="url(#shadow)" />
+  <text x="1534" y="976" class="small">RELATED FILES</text>
+  <text x="1534" y="1008" class="label">allergies.json</text>
+  <text x="1534" y="1038" class="text">
+    <tspan x="1534" dy="0">lab-results.json</tspan>
+    <tspan x="1534" dy="26">imaging.json</tspan>
+    <tspan x="1534" dy="34">Loaded through JSON reads</tspan>
+  </text>
+
+  <path d="M 1470 714 C 1488 700, 1496 690, 1510 688" class="line-green" />
+  <path d="M 1470 760 C 1488 778, 1496 790, 1510 790" class="line-green" />
+  <path d="M 1470 810 C 1488 860, 1496 882, 1510 886" class="line-green" />
+  <path d="M 1470 860 C 1488 962, 1496 1012, 1510 1030" class="line-green" />
+
+  <rect x="520" y="980" width="840" height="130" class="warm" filter="url(#shadow)" />
+  <text x="550" y="1018" class="small white">CONSOLIDATED API RESPONSE</text>
+  <text x="550" y="1054" class="label white">Patient Summary Payload</text>
+  <text x="550" y="1090" class="text white">
+    <tspan x="550" dy="0">demographics, latestEncounters, diagnoses, activeMedications, allergies,</tspan>
+    <tspan x="550" dy="26">recentLabResults, and imagingReferences</tspan>
+  </text>
+
+  <path d="M 1150 1045 C 1020 1045, 900 1045, 520 1045" class="line-orange" />
+  <path d="M 520 1010 C 420 950, 320 908, 240 900" class="line-dashed" />
+  <text x="250" y="940" class="text">Frontend renders the response into visible summary sections</text>
+</svg>
